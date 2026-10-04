@@ -1,6 +1,6 @@
 # Career Intel AI
 
-A private Hono service that extracts structured job details with the AI SDK, OpenAI, and Zod. It does not store jobs; the NestJS API owns draft creation and PostgreSQL.
+A private Hono service that extracts structured job and CV details with the AI SDK, OpenAI, and Zod. It does not store jobs; the NestJS API owns draft creation and PostgreSQL.
 
 ## Setup
 
@@ -8,6 +8,8 @@ A private Hono service that extracts structured job details with the AI SDK, Ope
 2. Copy `.env.example` to `.env` and set `OPENAI_API_KEY`, `OPENAI_MODEL`, and a long random `EXTRACTOR_TOKEN`.
 3. Run `pnpm dev` (default: `127.0.0.1:3001`).
 4. Configure the same token and `JOB_EXTRACTOR_URL=http://127.0.0.1:3001` in `career-intel-server`.
+
+`POST /extract-profile` accepts `{ "text": "..." }` with the same bearer token. It returns profile fields for NestJS to validate and save as a reviewable draft. The CV text is sent to OpenAI for extraction and is not stored by this service. Set `OPENAI_PROFILE_MODEL` to override `OPENAI_MODEL` for CVs.
 
 `POST /extract-job` accepts `{ "description": "...", "url": "" }` with `Authorization: Bearer <EXTRACTOR_TOKEN>`. It returns structured fields and requirements. `GET /health` is a local health check. The service validates both request and model output, does not fetch the posting URL, and keeps the OpenAI key server side.
 
