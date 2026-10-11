@@ -13,6 +13,7 @@ export const profileExtractionSchema = z.object({
   skills: z.array(z.object({
     name: z.string().max(500),
     proficiency: z.enum(['Unspecified', 'Beginner', 'Intermediate', 'Advanced', 'Expert']),
+    category: z.string().max(100).optional(),
   }).strict()).max(100),
   education: z.array(z.object({
     qualification: z.string().max(500), institution: z.string().max(500), year: z.string().max(500),

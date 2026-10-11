@@ -5,7 +5,7 @@ import type { ProfileExtraction } from './profile-schema.js';
 
 const extraction: ProfileExtraction = {
   currentRole: 'Designer', experience: [{ role: 'Designer', company: 'Acme', period: '2022–present', description: '' }],
-  skills: [{ name: 'Figma', proficiency: 'Unspecified' }], education: [], certifications: [],
+  skills: [{ name: 'Figma', proficiency: 'Unspecified', category: 'Design tools' }], education: [], certifications: [],
   languages: [], interests: [], workModels: [], locations: [],
   salaryCurrency: '', salaryMinimum: '', salaryTarget: '',
 };
